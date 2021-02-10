@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+// 引入后台路由模块
+const adminRouter=require('./routes/admin/adminRouter')
 
 var app = express();
 
@@ -19,7 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 前台路由
 app.use('/', indexRouter);
+// 后台路由
+app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

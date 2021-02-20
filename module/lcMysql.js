@@ -4,7 +4,7 @@ let options = {
   host: "localhost",
   user: "root",
   password: "admin",
-  database: "book",
+  database: "yygl",
 };
 // 创建与数据库的连接对象
 let con = mysql.createConnection(options);
@@ -20,12 +20,12 @@ con.connect((err) => {
 function sqlQuery(strSql, arr) {
   return new Promise(function (resolve, reject) {
     con.query(strSql, arr, (err, results) => {
-      // console.log(err);
-      // console.log(results);
       if (err) {
         reject(err);
+        console.log(err);
       } else {
         resolve(results);
+        console.log(results);
       }
     });
   });
